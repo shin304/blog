@@ -13,4 +13,12 @@
 
 // ブログ一覧画面を表示
 Route::get('/', 'BlogController@showList')->name('blogs');
+
+// ブログ詳細画面
 Route::get('/blog/{id}', 'BlogController@showDetal')->name('detail');
+
+// ブロク登録画面
+Route::get('/create', 'BlogController@showCreate')->name('create');
+
+// ブロク登録
+Route::post('/store', 'BlogController@storeBlog')->name('store');

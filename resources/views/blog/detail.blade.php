@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
           <blockquote class="blockquote mb-0">
-            <p>{{$blog->title}}</p>
+            <p>{{$blog->content}}</p>
             <footer class="blockquote-footer">作成日：<cite title="Source Title">{{$blog->updated_at}}</cite></footer>
           </blockquote>
         </div>

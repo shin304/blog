@@ -7,6 +7,9 @@
         @if (session()->has('err_msg'))
             <div class="alert text-danger alert-danger">{{session('err_msg')}}</div>
         @endif
+        @if (session()->has('success_msg'))
+            <div class="alert text-sucess alert-success">{{session('success_msg')}}</div>
+        @endif
         <table class="table table-striped">
           <tr>
             <th>記事番号</th>

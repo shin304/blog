@@ -8,14 +8,14 @@ use Illuminate\Contracts\Session\Session;
 
 /**
  * ブログ一覧を表示
- * 
  * @return view 
  */
 class BlogController extends Controller
 {
     public function showList()
     {
-        $blogs = Blog::all();
+        // $blogs = Blog::orderBy('id', 'desc')->get();
+        $blogs = Blog::all()->sortByDesc('id');
 
         return view('blog.list', compact('blogs'));
     }
@@ -33,10 +33,32 @@ class BlogController extends Controller
         // Session()->flush();
         // redirect()->with();
 
-        if (is_null($blog)) {
+        if (!empty($blog)) {
             return redirect(route('blogs'));
         } else {
             return view('blog.detail', compact('blog'));
         }
+    }
+
+    /**
+     * ブログ投稿画面
+     */
+    public function showCreate()
+    {
+        return view('blog.create');
+    }
+
+    /**
+     * ブログ登録処理
+     * 
+     * @return view
+     */
+    public function storeBlog(Request $request)
+    {
+        $inputs = $request->all();
+        Blog::create($inputs);
+        \Session::flash('success_msg', 'ブログを登録しました');
+
+        return redirect(route('blogs'));
     }
 }
