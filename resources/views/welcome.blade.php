@@ -81,7 +81,9 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    blog
+                    <br>
+                    nosukeno_portfolio
                 </div>
 
                 <div class="links">
