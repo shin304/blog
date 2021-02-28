@@ -2,12 +2,13 @@
 @section('title', 'ブログ投稿')
 @section('content')
   <div class="col-md-9 mx-auto">
-    <h2>ブログ登録</h2>
-    <form method="POST" action="{{ route('store') }}" onsubmit="return checkSubmit()">
+    <h2>ブログ編集フォーム</h2>
+    <form method="POST" action="{{ route('update') }}" onsubmit="return checkSubmit()">
       @csrf
+      <input type="hidden" id="id" name="id" value="{{$blog->id}}">
       <div class="form-group">
         <label for="title">タイトル</label>
-        <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}" placeholder="タイトルを入力してください">
+        <input type="text" class="form-control" id="title" name="title" value="{{$blog->title}}" placeholder="タイトルを入力してください">
         @if ($errors->has('title'))
           <div class="text-danger">
             {{$errors->first('title')}}
@@ -18,14 +19,14 @@
       </div>
       <div class="form-group">
         <label for="content">本文</label>
-        <textarea class="form-control" id="contetnt" name="content" value="{{old('content')}}" rows="5" placeholder="本文の内容を入力してください"></textarea>
+        <textarea class="form-control" id="contetnt" name="content" rows="5" placeholder="本文の内容を入力してください">{{$blog->content}}</textarea>
         @if ($errors->has('content'))
           <div class="text-danger">
             {{$errors->first('content')}}
           </div>
         @endif
       </div>
-      <button type="submit" class="btn btn-primary">登録する</button>
+      <button type="submit" class="btn btn-primary">更新する</button>
       <a href="{{ route('blogs') }}"><button type="button" class="btn btn-secondary">キャンセル</button></a>
     </form>
   </div>

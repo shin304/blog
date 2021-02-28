@@ -16,16 +16,19 @@
             <th>タイトル</th>
             <th>日付</th>
             <th></th>
+            <th></th>
           </tr>
           @foreach ($blogs as $key => $value)
             <tr>
               <td>{{$value->id}}</td>
               <td><a href="/blog/{{$value->id}}">{{$value->title}}</a></td>
               <td>{{$value->updated_at}}</td>
-              <td></td>
+              <td><button type="butoon" class="btn btn-primary" onclick="location.href='/edit{{$value->id}}'">編集</button></td>
+              <td><button type="butoon" class="btn btn-danger" onclick="location.href='/delete{{$value->id}}'">削除</button></td>
             </tr>
           @endforeach
         </table>
+        {{$blogs->links()}}
       </div>
     </div>
   @endsection
